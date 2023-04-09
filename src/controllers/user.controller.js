@@ -10,5 +10,5 @@ export const register = async (req, res) => {
 
     const saveUser = await newUser.save();
     const token = jwt.sign({id: saveUser._id}, config.SECRET, { expiresIn: 86400 })
-    return res.status(200).json("El usuario ha sido creado con exito")
+    return res.status(200).json("User has been created")
 }

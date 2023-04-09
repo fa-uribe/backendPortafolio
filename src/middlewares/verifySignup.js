@@ -7,7 +7,7 @@ export const checkRolesExisted = async (req, res, next) => {
         const roles = await Role.find({_id: req.body.roles});
         if ( roles.length > 0 ) {
         } else {
-            return res.status(400).json("El rol no existe");
+            return res.status(400).json("Role does not exist in DB");
         }
     }
     next();
@@ -16,7 +16,7 @@ export const checkRolesExisted = async (req, res, next) => {
 
 export const checkDuplicateEmail = async (req, res, next) => {
     const user = await User.findOne( { email: req.body.email } )
-    if (user) return res.status(400).json('El usuario ingresado ya existe');
+    if (user) return res.status(400).json('Email already registered on MyEstCalendar');
 
     next();
 }
