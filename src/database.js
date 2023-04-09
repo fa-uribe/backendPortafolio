@@ -1,7 +1,8 @@
 import mongoose from 'mongoose'
+import * as dotenv from 'dotenv';
+dotenv.config();
 
-
-mongoose.connect("mongodb+srv://fa-uribe:Favix140441@myestcalendar.vybkqe1.mongodb.net/myEstCalendar", {
+mongoose.connect(process.env.MONGO_URL, {
     
 })
     .then(db => console.log('Db is connected'))
