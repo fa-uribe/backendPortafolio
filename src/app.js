@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.json({Message: "Backend API started successfuly"})
+    res.json( "Backend API working properly" )
 })
 
 //Espacio para rutas

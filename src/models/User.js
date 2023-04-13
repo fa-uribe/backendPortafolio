@@ -9,11 +9,11 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Role"
     }],
-    subjects: [{
-        type: Schema.Types.ObjectId,
-        ref: "Subject"
+    career: [{
+      type: Schema.Types.ObjectId,
+      ref: "Career"
     }],
-    state: Boolean,
+    status: Boolean,
 }, {
     timestamps: true,
     versionKey: false

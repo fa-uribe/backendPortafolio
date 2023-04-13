@@ -1,7 +1,11 @@
 import { Schema, model } from "mongoose";
 
 const subjectSchema = new Schema ({
-    name: String,
+    subject_name: String,
+    career: [{
+        type: Schema.Types.ObjectId,
+        ref: "Career"
+    }]
 
 },
 {

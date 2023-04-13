@@ -9,7 +9,7 @@ export const signUp = async (req, res) => {
     const { username, password, email } = req.body;
     const role = await Role.find({name: "user"});
 
-    const newUser = User({ username, password: await User.encryptPassword(password), email, roles: role, state: true});
+    const newUser = User({ username, password: await User.encryptPassword(password), email, roles: role, status: true});
 
     if ( newUser ) {
         newUser.save();
@@ -20,8 +20,8 @@ export const signUp = async (req, res) => {
 
 }
 export const signIn = async (req, res) => {
-    const userFound = await User.findOne({email: req.body.email, state: true}).populate("roles")
-    const userFound2 = await User.find({email: req.body.email, state: true});
+    const userFound = await User.findOne({email: req.body.email, status: true}).populate("roles")
+    const userFound2 = await User.find({email: req.body.email, status: true});
     const rl = userFound2.map(rol => rol.roles);
     const rol = rl.toString(rl);
 
