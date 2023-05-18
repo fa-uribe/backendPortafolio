@@ -2,7 +2,6 @@ import { Schema, model } from "mongoose";
 
 const careerSchema = new Schema ({
     career_name: String,
-
 },
 {
     timestamps: true,
