@@ -17,3 +17,10 @@ export const userList = async (req, res) => {
     const data = await User.find()
     return res.status(200).json(data)
 }
+
+export const editUser = async (req, res) => {
+    const { username, password, email, career } = req.body;
+    const editData = User.findByIdAndUpdate(req.userId, { username, password, email, career });
+
+    return res.status(200).json("User data edited");
+}
