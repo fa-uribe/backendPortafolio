@@ -9,6 +9,7 @@ import { createRoles } from './libs/initialSetup.js'
 import authRoutes       from './routes/authentication/auth.routes'
 import userRoutes       from './routes/user.routes.js'
 import careerRoutes     from './routes/career.routes.js'
+import calendarRoutes   from './routes/calendar/calendar.routes.js'
 
 const app = express()
 createRoles()
@@ -24,7 +25,7 @@ app.get('/', (req, res) => {
 
 //Espacio para rutas
 app.use('/myEstCalendarAPI/auth'      , authRoutes)
-app.use('/myEstCalendarAPI/user'      , userRoutes)
+app.use('/myEstCalendarAPI/user'      , userRoutes, calendarRoutes)
 app.use('/myEstCalendarAPI/career'    , careerRoutes)
 //
 export default app;
