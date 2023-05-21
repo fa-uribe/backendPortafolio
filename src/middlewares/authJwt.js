@@ -7,18 +7,18 @@ export const verifyToken = async (req, res, next) => {
     try {
         const token = req.headers["x-access-token"];
 
-        if (!token) return res.status(403).json({message: "No se ha generado un token de acceso"})
+        if (!token) return res.status(403).json({message: "Token not generated"})
 
         const decoded = jwt.verify(token, config.SECRET)
         req.userId = decoded.id;
         
         const user = await User.findById(req.userId, {password: 0});
 
-        if (!user) return res.status(404).json({message: "Este usuario no existe"});
+        if (!user) return res.status(404).json({message: "This user does not exist"});
 
         next();
     } catch (error) {
-        return res.status(401).json({message: "No estas autorizado"})
+        return res.status(401).json({message: "Unauthorized"})
     }
 }
 
@@ -33,7 +33,7 @@ export const isAdmin = async (req, res, next) => {
         }
     }
     
-    return res.status(403).json({message: 'requires rol de administrador'})
+    return res.status(403).json({message: 'Admin role required'})
 }
 
 export const isUser = async (req, res, next) => {
@@ -47,5 +47,5 @@ export const isUser = async (req, res, next) => {
         }
     }
    
-    return res.status(403).json({message: 'requires rol de sub administrador'})
+    return res.status(403).json("There was an error verifying your user role")
 }

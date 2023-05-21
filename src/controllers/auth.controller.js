@@ -28,8 +28,8 @@ export const signUp = async (req, res) => {
 }
 export const signIn = async (req, res) => {
     const userFound = await User.findOne({email: req.body.email, status: true}).populate("roles")
-    const userFound2 = await User.find({email: req.body.email, status: true});
-    const rl = userFound2.map(rol => rol.roles);
+    const userData = await User.find({email: req.body.email, status: true});
+    const rl = userData.map(rol => rol.roles);
     const rol = rl.toString(rl);
 
     if (!userFound) return res.status(404).json({Error: "User not found"})
@@ -42,5 +42,5 @@ export const signIn = async (req, res) => {
         expiresIn: 86400
     })
 
-    res.json({token, rol})
+    res.json({token, userData})
 }
