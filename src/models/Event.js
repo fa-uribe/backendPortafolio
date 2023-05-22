@@ -4,7 +4,7 @@ const eventSchema = new Schema ({
     event_name: String,
     description: String,
     start_date: Date,
-    finish_date: Date,
+    end_date: Date,
     user: [{
         type: Schema.Types.ObjectId,
         ref: "User"
