@@ -3,18 +3,20 @@ import User from '../models/User.js';
 import Subject from '../models/Suject.js';
 import moment from 'moment/moment.js';
 
+moment.locale();
+
 export const eventCreate = async (req, res) => {
     const user = await User.findById(req.userId);
-    const { event_name, description, start_date, end_date, subject } = req.body;
-    const newEvent = Event({ event_name, description, start_date, end_date, user: user, subject });
-    const saveEven = await newEvent.save();
+    const { event_name, description, event_date, start_hour, end_hour, subject } = req.body;
+    const newEvent = Event({ event_name, description, event_date, start_hour, end_hour, user: user, subject });
+    const saveEvent = await newEvent.save();
 
     return res.status(200).json("Event created");
 }
 
 export const eventEdit = async (req, res) => {
-    const { event_name, description, start_date, end_date } = req.body;
-    const editData = await Event.findByIdAndUpdate(req.params.id, { event_name, description, start_date, end_date });
+    const { event_name, description, event_date, start_hour, end_hour } = req.body;
+    const editData = await Event.findByIdAndUpdate(req.params.id, { event_name, description, event_date, start_hour, end_hour });
 
     return res.status(200).json("Event edited");
 }
@@ -45,9 +47,9 @@ export const dailyEvents = async (req, res) => {
 
     const eventsDisplay = eventsData.filter((event) => {
         const day = req.params.day;
-        const startDate = moment(event.start_date).format("YYYY-MM-DD")
+        const event_date = moment(event.event_date).format("YYYY-MM-DD")
 
-        return startDate === day;
+        return event_date === day;
     });
 
     return res.status(200).json(eventsDisplay)

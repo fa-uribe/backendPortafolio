@@ -3,8 +3,9 @@ import { Schema, model } from "mongoose";
 const eventSchema = new Schema ({
     event_name: String,
     description: String,
-    start_date: Date,
-    end_date: Date,
+    event_date: String,
+    start_hour: String,
+    end_hour: String,
     user: [{
         type: Schema.Types.ObjectId,
         ref: "User"
