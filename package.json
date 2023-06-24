@@ -12,9 +12,6 @@
   "keywords": [
     "backend"
   ],
-  "engines": {
-    "node": "14.x"
-  },
   "author": "Fabian Uribe",
   "license": "ISC",
   "dependencies": {
