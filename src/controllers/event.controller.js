@@ -47,7 +47,7 @@ export const dailyEvents = async (req, res) => {
 
     const eventsDisplay = eventsData.filter((event) => {
         const day = req.params.day;
-        const event_date = moment(event.event_date).format("DD-MM-YYYY")
+        const event_date = event.event_date;
 
         return event_date === day;
     });
