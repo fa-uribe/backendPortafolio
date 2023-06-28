@@ -1,19 +1,17 @@
-const User = require('../models/User.js');
+import User from '../models/User.js';
+import nodemailer from 'nodemailer';
 
-const nodemailer = require('nodemailer');
+export const sendEventNotification = async (evento) => {
+  const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // true for 465, false for other ports
+      auth: {
+          user: "no.reply.estcalendar@gmail.com",
+          pass: "mtvqyncfiolebfcq"
+      },
+  });
 
-const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    port: 465,
-    secure: true, // true for 465, false for other ports
-    auth: {
-        user: "no.reply.estcalendar@gmail.com",
-        pass: "mtvqyncfiolebfcq"
-    },
-});
-
-
-const sendEventNotification = async (evento) => {
   const eventUser = await User.findById(evento.user[0])
 
   const mailOptions = {
@@ -30,5 +28,3 @@ const sendEventNotification = async (evento) => {
     console.error('Error al enviar el correo electrónico:', error);
   }
 };
-
-module.exports = { sendEventNotification };
