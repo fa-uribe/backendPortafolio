@@ -1,6 +1,6 @@
-const nodemailer = require('nodemailer');
-const { default: User } = require('../models/User');
+import User from '../models/User.js';
 
+const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
