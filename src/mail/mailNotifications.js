@@ -1,17 +1,18 @@
 import User from '../models/User.js';
 import nodemailer from 'nodemailer';
 
-export const sendEventNotification = async (evento) => {
-  const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // true for 465, false for other ports
-      auth: {
-          user: "no.reply.estcalendar@gmail.com",
-          pass: "mtvqyncfiolebfcq"
-      },
-  });
+const transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+        user: "no.reply.estcalendar@gmail.com",
+        pass: "mtvqyncfiolebfcq"
+    },
+});
 
+export const sendEventNotification = async (evento) => {
+  
   const eventUser = await User.findById(evento.user[0])
 
   const mailOptions = {

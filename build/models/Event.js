@@ -11,6 +11,7 @@ var eventSchema = new _mongoose.Schema({
   event_date: String,
   start_hour: String,
   end_hour: String,
+  notified: Boolean,
   user: [{
     type: _mongoose.Schema.Types.ObjectId,
     ref: "User"

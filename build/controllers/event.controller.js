@@ -30,7 +30,8 @@ var eventCreate = /*#__PURE__*/function () {
             start_hour: start_hour,
             end_hour: end_hour,
             user: user,
-            subject: subject
+            subject: subject,
+            notified: false
           });
           _context.next = 7;
           return newEvent.save();
@@ -166,8 +167,8 @@ var dailyEvents = /*#__PURE__*/function () {
         case 5:
           eventsData = _context6.sent;
           eventsDisplay = eventsData.filter(function (event) {
-            var day = req.params.day;
-            var event_date = (0, _moment["default"])(event.event_date).format("YYYY-MM-DD");
+            var day = (0, _moment["default"])(req.params.day).format("DD-MM-YYYY");
+            var event_date = (0, _moment["default"])(event.event_date).format("DD-MM-YYYY");
             return event_date === day;
           });
           return _context6.abrupt("return", res.status(200).json(eventsDisplay));
