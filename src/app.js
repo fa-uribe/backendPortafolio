@@ -33,8 +33,6 @@ app.get('/eventos', async (req, res) => {
         const eventDate = moment(evento.event_date, 'YYYY-MM-DD'); 
         const today = moment();
         const differenceInDays = eventDate.diff(today, 'days');
-        console.log(differenceInDays);
-        console.log(evento);
   
         if (differenceInDays >= 0 && differenceInDays <= 1) {
           await sendEventNotification(evento);
