@@ -8,7 +8,7 @@ moment.locale();
 export const eventCreate = async (req, res) => {
     const user = await User.findById(req.userId);
     const { event_name, description, event_date, start_hour, end_hour, subject } = req.body;
-    const newEvent = Event({ event_name, description, event_date, start_hour, end_hour, user: user, subject });
+    const newEvent = Event({ event_name, description, event_date, start_hour, end_hour, user: user, subject, notified: false });
     const saveEvent = await newEvent.save();
 
     return res.status(200).json("Event created");

@@ -6,6 +6,7 @@ const eventSchema = new Schema ({
     event_date: String,
     start_hour: String,
     end_hour: String,
+    notified: Boolean,
     user: [{
         type: Schema.Types.ObjectId,
         ref: "User"
