@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
   res.json("Backend API working properly")
 })
 
-app.get('/eventos', async (req, res) => {
+app.get('/sendNotifications', async (req, res) => {
     try {
       const eventos = await Event.find({notified: false});
       
