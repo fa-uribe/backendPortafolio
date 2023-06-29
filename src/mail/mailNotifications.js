@@ -22,7 +22,8 @@ export const sendEventNotification = async (evento) => {
     text: `"${evento.event_name}" comenzará pronto. ¡No te olvides! \n
     ${evento.event_name} \n
     ${evento.description} \n
-    ${evento.start_hour} - ${evento.end_hour}`,
+    ${evento.start_hour} - ${evento.end_hour} \n
+    -estCalendar`,
   };
 
   try {
