@@ -19,7 +19,10 @@ export const sendEventNotification = async (evento) => {
     from: 'no.reply.estcalendar@gmail.com', 
     to: eventUser.email, 
     subject: 'Recordatorio de evento',
-    text: `Tu evento "${evento.event_name}" comenzará pronto. ¡No te olvides!`,
+    text: `"${evento.event_name}" comenzará pronto. ¡No te olvides! \n
+    ${evento.event_name} \n
+    ${evento.description} \n
+    ${evento.start_hour} - ${evento.end_hour}`,
   };
 
   try {
